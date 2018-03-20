@@ -31,7 +31,7 @@ public class BuildMojoIntegrationTest extends KieMavenPluginBaseIntegrationTest 
     public void testCleanInstallWithAllSupportedResourceTypes() throws Exception {
         File basedir = resources.getBasedir("kjar-2-all-resources");
         MavenExecutionResult result = mavenRuntime
-                .forProject(basedir)
+                .forProject(basedir).withCliOptions("-X", "-e")
                 .execute("clean",
                          "install");
         result.assertErrorFreeLog();
